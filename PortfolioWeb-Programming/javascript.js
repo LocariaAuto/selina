@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener("submit", function (e) {
             e.preventDefault(); // Always prevent default to handle everything in JavaScript
-            
             const name = document.getElementById("name");
             const email = document.getElementById("email");
             const message = document.getElementById("message");
@@ -218,11 +217,9 @@ langBtn.addEventListener("click", () => {
     }
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const langBtn = document.getElementById("langBtn");
     let currentLang = "de";
-
     langBtn.addEventListener("click", () => {
         if (currentLang === "de") {
             document.querySelectorAll(".lang-de").forEach(el => el.style.display = "none");
@@ -237,37 +234,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
 // -----------------------------
 // Smooth Scroll with Navbar Offset
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
     // Get all anchor links in the navbar
     const navLinks = document.querySelectorAll('.NavBar a[href^="#"]');
-    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
             // Skip if it's just "#" or empty
             if (href === '#' || href === '') return;
-            
             const targetId = href.substring(1); // Remove the #
             const targetElement = document.getElementById(targetId);
-            
             if (targetElement) {
                 e.preventDefault();
-                
+
                 // Calculate navbar height dynamically
                 const navbar = document.querySelector('.NavBar ul');
                 const navbarHeight = navbar ? navbar.offsetHeight + 20 : 80; // Add 20px extra padding
-                
+
                 // Get the target element's position
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                
+
                 // Calculate the scroll position with offset
                 const offsetPosition = targetPosition - navbarHeight;
-                
+
                 // Smooth scroll to the calculated position
                 window.scrollTo({
                     top: offsetPosition,

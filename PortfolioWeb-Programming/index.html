@@ -2,12 +2,13 @@
 <html>
    
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
+    <script scr="javascript.js" defer></script>
 </head>
 
 <body>
 
-    <!--Navigationsbar mit 5 Items + Impressum + Sprachwechsel Button-->
+    <!--Navigationsbar mit Verlinkung zu 5 Items + Language-Toggle-Button um zwischen Deutsch und Englisch umzuschalten-->
     <nav class="NavBar">
         <ul>
             <li><a href="#Home"><span class="lang-de">Home</span><span class="lang-en" style="display:none;">Home</span></a></li>
@@ -22,8 +23,8 @@
     
     <br><br>
 
-    <!--Header-->
-    <h1 id="Home" class="MachMichTuerkis fade-in">
+    <!--Header, welcher beim Laden der Seite sanft eingeblendet wird-->
+    <h1 id="Home" class="fade-in">
         <strong>
             <span class="lang-de">Hochschulprojekt <br>für Grundlagen Web-Programmierung</span>
             <span class="lang-en" style="display:none;">University Project <br>for Web Programming Basics</span>
@@ -38,9 +39,9 @@
 
     <br><br>
 
-    <!--Intro-->
+    <!--Intro - Mit 3 interaktiven Elementen (Wortdefinitions-Pop-Up und Link zur TH-Website)-->
     <section id="Intro">
-        <div class="sectioncontent">
+          <div class="sectioncontent">
             <span class="lang-de">
                 Hallo an Alle, die diese Website gefunden haben und sich die Zeit nehmen sie zu lesen :) <br>
                 Ich studiere seit Oktober 2025 
@@ -72,7 +73,7 @@
             </span>
         </div>
     </section>
-
+</section>
 
     <br><br><br>
 
@@ -83,7 +84,7 @@
 
     <br><br><br>
 
-    <!--Über mich-->
+    <!--Über mich - Mit 1 interaktiven Element (Memory-Pop-Up von Nellys Foto)-->
     <section id="UeberMich" class="section">
         <div class="sectioncontent">
             <br><br>
@@ -96,7 +97,6 @@
                             <img src="images/Nelly9.jpg" alt="Nelly" />
                         </div>
                 </div>
-
                 <br><br>
                 In den nächsten 7 Semestern an der TH Aschaffenburg und am Campus Miltenberg erhoffe ich mir, mein Wissensdrang für die Medienwelt und das Marketing zu stillen. 
                 Ich wünsche mir nicht nur einen guten Abschluss, sondern auch starke Fachkompetenz für meinen späteren beruflichen Alltag. 
@@ -115,7 +115,6 @@
                 For the last eight years, I worked in healthcare, which, given the stress and shift work, is not healthy for everyone. 
                 Therefore, I hope to find my new passion in Digital Marketing and E-Commerce!
             </span>
-
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-date">2015-2023</div>
@@ -297,8 +296,9 @@
     <div id="notificationToast" class="notification-toast">
         <span id="toastMessage"></span>
     </div>  
-              
+
     <script src="javascript.js" defer></script>
 
 </body>
+
 </html>
