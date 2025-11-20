@@ -1,3 +1,32 @@
+// Theme Toggle (Light / Dark)  
+const themeBtn = document.getElementById('themeBtn');
+const root = document.documentElement;
+
+// Load saved theme from localStorage (if any)
+let currentTheme = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-bs-theme', currentTheme);
+updateThemeButton();
+
+// Function to toggle theme
+themeBtn.addEventListener('click', () => {
+  currentTheme = (root.getAttribute('data-bs-theme') === 'light') ? 'dark' : 'light';
+  root.setAttribute('data-bs-theme', currentTheme);
+  localStorage.setItem('theme', currentTheme);
+  updateThemeButton();
+});
+
+function updateThemeButton() {
+  if (root.getAttribute('data-bs-theme') === 'dark') {
+    themeBtn.textContent = 'Light Mode';
+    themeBtn.classList.remove('btn-outline-dark');
+    themeBtn.classList.add('btn-outline-light');
+  } else {
+    themeBtn.textContent = 'Dark Mode';
+    themeBtn.classList.remove('btn-outline-light');
+    themeBtn.classList.add('btn-outline-dark');
+  }
+}
+
 // -----------------------------
 // Toast-Benachrichtigung
 // -----------------------------
@@ -234,38 +263,44 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-// -----------------------------
-// Smooth Scroll with Navbar Offset
-// -----------------------------
-document.addEventListener("DOMContentLoaded", () => {
-    // Get all anchor links in the navbar
-    const navLinks = document.querySelectorAll('.NavBar a[href^="#"]');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            // Skip if it's just "#" or empty
-            if (href === '#' || href === '') return;
-            const targetId = href.substring(1); // Remove the #
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                e.preventDefault();
+// --- Working Smooth Scroll ---
+const navLinks = document.querySelectorAll('.NavBar a[href^="#"]');
 
-                // Calculate navbar height dynamically
-                const navbar = document.querySelector('.NavBar ul');
-                const navbarHeight = navbar ? navbar.offsetHeight + 20 : 80; // Add 20px extra padding
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
 
-                // Get the target element's position
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        if (!href || href === "#") return;
 
-                // Calculate the scroll position with offset
-                const offsetPosition = targetPosition - navbarHeight;
+        const target = document.querySelector(href);
+        if (!target) return;
 
-                // Smooth scroll to the calculated position
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
+        e.preventDefault();
+
+        const navbarHeight = document.querySelector('.NavBar ul').offsetHeight + 20;
+
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = targetPosition - navbarHeight;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
         });
     });
+});
+
+
+const themeButton = document.getElementById('theme-button');
+const body = document.body;
+
+themeButton.addEventListener('click', () => {
+    // Toggle the dark-mode class on <html> or <body>
+    document.documentElement.classList.toggle('dark-mode');
+
+    // Change the button text accordingly
+    if (document.documentElement.classList.contains('dark-mode')) {
+    themeButton.textContent = 'Light Mode';
+    } else {
+    themeButton.textContent = 'Dark Mode';
+    }
 });

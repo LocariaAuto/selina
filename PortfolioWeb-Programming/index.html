@@ -3,7 +3,6 @@
    
 <head>
     <link rel="stylesheet" href="style.css"> 
-    <script scr="javascript.js" defer></script>
 </head>
 
 <body>
@@ -11,6 +10,9 @@
     <!--Navigationsbar mit Verlinkung zu 5 Items + Language-Toggle-Button um zwischen Deutsch und Englisch umzuschalten-->
     <nav class="NavBar">
         <ul>
+            <div class="theme-toggle">
+                <button id="theme-button">Dark Mode</button>
+            </div>
             <li><a href="#Home"><span class="lang-de">Home</span><span class="lang-en" style="display:none;">Home</span></a></li>
             <li><a href="#UeberMich"><span class="lang-de">Über Mich</span><span class="lang-en" style="display:none;">About Me</span></a></li>
             <li><a href="#MeineBotschaft"><span class="lang-de">Meine Botschaft</span><span class="lang-en" style="display:none;">My Message</span></a></li>
@@ -73,7 +75,6 @@
             </span>
         </div>
     </section>
-</section>
 
     <br><br><br>
 
@@ -292,6 +293,8 @@
         </span>
     </section>
 
+    <br><br><br>
+    
     <!--Toast Notification -->
     <div id="notificationToast" class="notification-toast">
         <span id="toastMessage"></span>
