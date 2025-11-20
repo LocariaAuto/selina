@@ -27,39 +27,45 @@ color:rgb(9, 104, 107)
 }
 
 /* Navbar fixed and transparent */
+.NavBar {
+  position: relative; /* Positioning context for absolutely positioned buttons */
+  width: 100%;
+  overflow: visible; /* Ensure buttons aren't cut off */
+}
+
 .NavBar ul {
   position: fixed;
-  background: rgba(32, 136, 144, 0.8); /* semi-transparent */
+  background: var(--navbar-bg);
+  background-color: var(--navbar-bg);
   top: 0;
   left: 0;
   width: 100%;
-  border-bottom: 5px solid rgba(7, 72, 69, 0.5); /* optional for subtle border */
+  max-width: 100vw; /* Prevent exceeding viewport width */
+  border-bottom: 5px solid var(--navbar-border);
   display: flex;
+  align-items: center; /* Vertically center all items */
   justify-content: center;
   gap: 60px;
-  padding: 20px;
+  padding: 20px 20px; /* 20px padding on left and right for button spacing */
   margin-top: 0px;
   list-style: none;
   z-index: 9999; /* make sure navbar is on top */
-  transition: background 0.5s ease;
+  overflow: visible; /* Ensure buttons aren't cut off */
+  box-sizing: border-box; /* Include padding in width calculation */
+  transition: background 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.NavBar ul li {
+  display: flex;
+  align-items: center; /* Vertically center content within each list item */
 }
 
 .NavBar ul li a {
   color: white;
   font-weight: bold;
   text-decoration: none;
-}
-
-/* Remove body margin-top so content scrolls behind navbar */
-body {
-  padding: 20px;
-  font-size: 20px;
-  color: var(--text-color);
-  margin: 0; /* remove top margin */
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
-  transition: background-color 0.5s ease, color 0.5s ease;
+  display: flex;
+  align-items: center; /* Vertically center link text */
 }
 
 body {
@@ -76,18 +82,52 @@ body {
 }
 
 .theme-toggle {
-  margin-right: fixed; /* pushes toggle to the very left of the navbar */
+  position: absolute;
+  left: 20px; /* 20px from left edge */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center */
 }
 
-.theme-toggle button {
-  font-size: 0.9rem;
-  /* optionally tweak padding or other styling here */
+.language-toggle {
+  position: absolute;
+  right: 20px; /* 20px from right edge */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center */
+}
+
+.theme-toggle button,
+#langBtn {
+  background-color: var(--section-bg);
+  color: var(--text-color);
+  border-radius: 20px;
+  border: 2px solid var(--border-color);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap; /* Prevent text wrapping */
+  max-width: calc(50vw - 40px); /* Prevent button from exceeding half viewport width */
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+.theme-toggle button:hover,
+#langBtn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.image {
+  position: relative; /* Establish stacking context */
+  z-index: 0; /* Keep dachshund images behind gallery images */
 }
 
 .image img {
-width: 200px;
-height: auto;
-transition: filter 0.5s ease; /* smooth transition */
+  position: relative;
+  z-index: 0; /* Keep dachshund images behind gallery images */
+  width: 200px;
+  height: auto;
+  transition: filter 0.5s ease; /* smooth transition */
 }
 
 /* When dark mode is active, invert the colors */
@@ -95,42 +135,75 @@ transition: filter 0.5s ease; /* smooth transition */
     filter: invert(1) hue-rotate(180deg);
 }
 
+.image-row {
+  position: relative; /* Establish stacking context */
+  z-index: 1; /* Ensure gallery container is above dachshund images */
+}
+
 .image-row img {
+  position: relative; /* Establish stacking context for z-index to work */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   border-radius: 20px;
-  border: 2px solid #0b484a;
+  border: 2px solid var(--border-color);
   width: 100%;
+  z-index: 1; /* Base z-index for gallery images */
 }
 
 .image-row img:hover {
   transform: scale(2);
-  z-index: 10;
+  z-index: 100; /* Higher z-index on hover to appear above everything */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Style for links in content sections */
+#Intro a,
+#UeberMich a,
+#MeineBotschaft a,
+.impressum-content a {
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+#Intro a:hover,
+#UeberMich a:hover,
+#MeineBotschaft a:hover,
+.impressum-content a:hover {
+  border-bottom: 2px solid var(--border-color);
+  opacity: 0.8;
+}
+
+#Intro a:visited,
+#UeberMich a:visited,
+#MeineBotschaft a:visited,
+.impressum-content a:visited {
+  color: var(--text-color);
 }
 
 #Intro {
   border-radius: 20px; 
-  background-color: #c3e4e4;
   background-color: var(--section-bg);
   width: 100%;
   margin: 0;
+  box-sizing: border-box; /* Prevent overflow */
 }
 
 #UeberMich {
   border-radius: 20px; 
-  background-color: #c3e4e4;
   background-color: var(--section-bg);
   width: 100%;
   margin: 0;
+  box-sizing: border-box; /* Prevent overflow */
 }
 
 #MeineBotschaft {
   border-radius: 20px; 
-  background-color: #c3e4e4;
   background-color: var(--section-bg);
   width: 100%;
   margin: 0;
+  box-sizing: border-box; /* Prevent overflow */
 }
 
 .sectioncontent {
@@ -142,7 +215,7 @@ transition: filter 0.5s ease; /* smooth transition */
 
 #Galerie img {
   border-radius: 20px;
-  border: 2px solid #0b484a;
+  border: 2px solid var(--border-color);
   width: 20%;
   height: auto;
   margin: 10px;
@@ -168,13 +241,13 @@ transition: filter 0.5s ease; /* smooth transition */
 .tooltip {
   position: relative;
   cursor: pointer;
-  border-bottom: 1px dotted #074845; /* subtle indicator */
+  border-bottom: 1px dotted var(--border-color); /* subtle indicator */
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 200px;
-  background-color: #0b484a;
+  background-color: var(--border-color);
   color: #fff;
   text-align: center;
   padding: 5px 10px;
@@ -205,13 +278,24 @@ transition: filter 0.5s ease; /* smooth transition */
     left: 50%;
     transform: translateX(-50%) scale(0); /* start hidden and scaled down */
     transform-origin: bottom center; /* zoom from bottom center */
-    z-index: 10;
-    border: 2px solid #0b484a;
+    z-index: 10000; /* High z-index to ensure it appears above other content */
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.5s ease;
     opacity: 0; /* hidden initially */
+    visibility: hidden; /* completely hidden when not hovered */
+    pointer-events: none; /* prevent popup from interfering with hover */
+    white-space: nowrap; /* prevent wrapping */
+}
+
+/* Timeline popups show below the item */
+.timeline-popup {
+    bottom: auto; /* Override bottom positioning */
+    top: 100%; /* Position below the item */
+    margin-top: 10px; /* Add some spacing */
+    transform-origin: top center; /* zoom from top center */
 }
 
 .memory-popup img {
@@ -223,6 +307,14 @@ transition: filter 0.5s ease; /* smooth transition */
 .memory-container:hover .memory-popup {
     transform: translateX(-50%) scale(1); /* scale up to full size */
     opacity: 1; /* make visible */
+    visibility: visible; /* make it visible */
+}
+
+/* Timeline popup hover - ensure it scales from top center */
+.timeline-item.memory-container:hover .timeline-popup {
+    transform: translateX(-50%) scale(1); /* scale up to full size */
+    opacity: 1; /* make visible */
+    visibility: visible; /* make it visible */
 }
 
 .timeline {
@@ -242,8 +334,9 @@ transition: filter 0.5s ease; /* smooth transition */
   left: 0;
   width: 100%;
   height: 4px;
-  background: #074845;
+  background: var(--border-color);
   z-index: 1;
+  transition: background 0.5s ease;
 }
 
 .timeline-item {
@@ -255,6 +348,11 @@ transition: filter 0.5s ease; /* smooth transition */
   margin-bottom: 40px; /* spacing for wrapping */
 }
 
+/* Timeline items as memory containers */
+.timeline-item.memory-container {
+  cursor: pointer;
+}
+
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -263,9 +361,11 @@ transition: filter 0.5s ease; /* smooth transition */
   transform: translateX(-50%);
   width: 16px;
   height: 16px;
-  border: 2px solid #074845;
+  background: var(--section-bg);
+  border: 2px solid var(--border-color);
   border-radius: 50%;
   z-index: 2;
+  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
 .timeline-date {
@@ -274,10 +374,31 @@ transition: filter 0.5s ease; /* smooth transition */
 }
 
 .timeline-content {
+  background: var(--section-bg);
   padding: 5px 10px;
   border-radius: 6px;
   margin-top: 10px;
   font-size: 0.9rem;
+  transition: background 0.5s ease;
+  display: block !important; /* Ensure block display to prevent overlap */
+  width: 100%; /* Take full width of container */
+  box-sizing: border-box; /* Include padding in width */
+  word-wrap: break-word; /* Allow text to wrap properly */
+  overflow-wrap: break-word; /* Additional word wrapping support */
+}
+
+/* Ensure language versions don't overlap */
+.timeline-item .timeline-content.lang-de,
+.timeline-item .timeline-content.lang-en {
+  display: block;
+}
+
+.timeline-item .timeline-content[style*="display: none"] {
+  display: none !important;
+}
+
+.timeline-item .timeline-content[style*="display: inline"] {
+  display: block !important; /* Override inline to prevent overlap */
 }
 
 .custom-error {
@@ -322,36 +443,119 @@ transition: filter 0.5s ease; /* smooth transition */
 .form-group label {
   font-weight: bold;
   margin-bottom: 5px;
+  color: var(--text-color);
+  transition: color 0.5s ease;
 }
 
 .form-group input,
 .form-group textarea {
-  background-color: #c3e4e4;
   background-color: var(--section-bg);
+  color: var(--text-color);
   padding: 10px;
   font-size: 16px;
-  border: 2px solid #0b484a;
+  border: 2px solid var(--border-color);
   border-radius: 20px;
   box-sizing: border-box;
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
 
 .submit-button {
-  background-color: #c3e4e4;
+  background-color: var(--section-bg);
+  color: var(--text-color);
   border-radius: 20px;
-  border: 2px solid #0b484a;
+  border: 2px solid var(--border-color);
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 #Impressum {
   color: var(--text-color);
   border-radius: 20px; 
-  background-color: #c3e4e4;
   background-color: var(--section-bg);
-  padding: 40px;
+  padding: 25px;
   width: 100%;
   margin: 0;
+  box-sizing: border-box; /* Include padding in width calculation to prevent overflow */
+  overflow-wrap: break-word; /* Allow long words to break if needed */
+  word-wrap: break-word; /* Fallback for older browsers */
+}
+
+#Impressum h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.impressum-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.impressum-label {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.impressum-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.impressum-email {
+  margin: 0;
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.email-link {
+  color: var(--text-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.email-link:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.email-icon {
+  font-size: 1rem;
+}
+
+.impressum-id {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.impressum-note {
+  margin: 10px 0 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.7;
 }
 
 #Home,
@@ -367,7 +571,7 @@ transition: filter 0.5s ease; /* smooth transition */
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #0b484a;
+  background-color: var(--border-color);
   color: white;
   padding: 16px 24px;
   border-radius: 8px;
@@ -376,23 +580,52 @@ transition: filter 0.5s ease; /* smooth transition */
   display: none;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
   max-width: 300px;
   font-weight: bold;
 }
 
 .notification-toast.show {
-
   display: block;
   opacity: 1;
   transform: translateY(0);
+  animation: attentionPulse 2s ease-in-out;
+}
 
+@keyframes attentionPulse {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  25% {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  75% {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .notification-toast.success {
-  background-color: #28a745;
+  background-color: rgb(52, 156, 164); /* Lighter teal that fits the design */
+  color: white;
+}
+
+/* Dark mode success toast */
+:root.dark-mode .notification-toast.success {
+  background-color: #1a4a4f; /* Lighter teal for dark mode */
 }
 
 .notification-toast.error {
-  background-color: #dc3545;
+  background-color: #8b2e2e; /* Darker red that fits better with the color scheme */
+  color: white;
 }

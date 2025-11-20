@@ -9,19 +9,27 @@
 
     <!--Navigationsbar mit Verlinkung zu 5 Items + Language-Toggle-Button um zwischen Deutsch und Englisch umzuschalten-->
     <nav class="NavBar">
-        <ul>
-            <div class="theme-toggle">
-                <button id="theme-button">Dark Mode</button>
-            </div>
-            <li><a href="#Home"><span class="lang-de">Home</span><span class="lang-en" style="display:none;">Home</span></a></li>
-            <li><a href="#UeberMich"><span class="lang-de">Über Mich</span><span class="lang-en" style="display:none;">About Me</span></a></li>
-            <li><a href="#MeineBotschaft"><span class="lang-de">Meine Botschaft</span><span class="lang-en" style="display:none;">My Message</span></a></li>
-            <li><a href="#Galerie"><span class="lang-de">Galerie</span><span class="lang-en" style="display:none;">Gallery</span></a></li>
-            <li><a href="#Kontakt"><span class="lang-de">Kontakt</span><span class="lang-en" style="display:none;">Contact</span></a></li>
-            <li><a href="#Impressum"><span class="lang-de">Impressum</span><span class="lang-en" style="display:none;">Legal Notice</span></a></li>
-            <li class="language-toggle"><button id="langBtn">EN</button></li>
-        </ul>
-    </nav>
+    <ul>
+        <!-- Theme toggle button as <li> -->
+        <li class="theme-toggle">
+            <button id="theme-button">Dark Mode</button>
+        </li>
+
+        <!-- Navigation links -->
+        <li><a href="#Home"><span class="lang-de">Home</span><span class="lang-en" style="display:none;">Home</span></a></li>
+        <li><a href="#UeberMich"><span class="lang-de">Über Mich</span><span class="lang-en" style="display:none;">About Me</span></a></li>
+        <li><a href="#MeineBotschaft"><span class="lang-de">Meine Botschaft</span><span class="lang-en" style="display:none;">My Message</span></a></li>
+        <li><a href="#Galerie"><span class="lang-de">Galerie</span><span class="lang-en" style="display:none;">Gallery</span></a></li>
+        <li><a href="#Kontakt"><span class="lang-de">Kontakt</span><span class="lang-en" style="display:none;">Contact</span></a></li>
+        <li><a href="#Impressum"><span class="lang-de">Impressum</span><span class="lang-en" style="display:none;">Legal Notice</span></a></li>
+
+        <!-- Language toggle button as <li> -->
+        <li class="language-toggle">
+            <button id="langBtn">EN</button>
+        </li>
+    </ul>
+</nav>
+
     
     <br><br>
 
@@ -108,7 +116,12 @@
             <span class="lang-en" style="display:none;">
                 My name is Selina Brückner, I am 30 years old and live with my partner and our cat in Leidersbach. Unfortunately, our dog passed away suddenly in early November, which is why I want to include her in this website.
                 <br><br>
-                In loving memory of Nelly ♥
+                <div class="memory-container">
+                    In loving memory of Nelly <span class="heart">♥</span>
+                        <div class="memory-popup">
+                            <img src="images/Nelly9.jpg" alt="Nelly" />
+                        </div>
+                </div>
                 <br><br>
                 Over the next 7 semesters at TH Aschaffenburg and the Miltenberg campus, I hope to satisfy my curiosity for the media world and marketing. 
                 I aim not only for a good degree but also strong expertise for my future professional life. 
@@ -117,26 +130,38 @@
                 Therefore, I hope to find my new passion in Digital Marketing and E-Commerce!
             </span>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item memory-container">
                     <div class="timeline-date">2015-2023</div>
                     <div class="timeline-content lang-de">Tätigkeit im Gesundheitswesen
                     </div>
                     <div class="timeline-content lang-en" style="display:none;">Career in healthcare</div>
-            </div>
-                <div class="timeline-item">
+                    <div class="memory-popup timeline-popup">
+                        <img src="images/image1.jpg" alt="Timeline image 1" />
+                    </div>
+                </div>
+                <div class="timeline-item memory-container">
                     <div class="timeline-date">2023-2024</div>
                     <div class="timeline-content lang-de">Zwei Jahre Backpacking und Leben in Kanada</div>
                     <div class="timeline-content lang-en" style="display:none;">Two years of backpacking and living in Canada</div>
+                    <div class="memory-popup timeline-popup">
+                        <img src="images/image2.jpg" alt="Timeline image 2" />
+                    </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item memory-container">
                     <div class="timeline-date">2025-2029</div>
                     <div class="timeline-content lang-de">Studium Digitales Marketing & E-Commerce</div>
                     <div class="timeline-content lang-en" style="display:none;">Studying Digital Marketing & E-Commerce</div>
+                    <div class="memory-popup timeline-popup">
+                        <img src="images/image3.jpg" alt="Timeline image 3" />
+                    </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item memory-container">
                     <div class="timeline-date">ab 2029</div>
                     <div class="timeline-content lang-de">Berufliche Weiterentwicklung und Familie</div>
                     <div class="timeline-content lang-en" style="display:none;">Professional growth & family life</div>
+                    <div class="memory-popup timeline-popup">
+                        <img src="images/image4.jpg" alt="Timeline image 4" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -276,21 +301,29 @@
 
     <!--Impressum-->
     <section id="Impressum">
-        <strong><span class="lang-de">Impressum:</span><span class="lang-en" style="display:none;">Legal Notice:</span></strong> <br><br>
-        <span class="lang-de">
-            Alleinig erstellt durch: <br>
-            Selina Brückner <br>
-            s251133@th-ab.de <br>
-            Matrikelnummer: 2309020 <br>
-            ChatGPT wurde als Hilfsmittel genutzt.
-        </span>
-        <span class="lang-en" style="display:none;">
-            Created solely by: <br>
-            Selina Brückner <br>
-            s251133@th-ab.de <br>
-            Student ID: 2309020 <br>
-            ChatGPT was used as a tool.
-        </span>
+        <h2><span class="lang-de">Impressum</span><span class="lang-en" style="display:none;">Legal Notice</span></h2>
+        <div class="impressum-content">
+            <p class="impressum-label"><span class="lang-de">Alleinig erstellt durch:</span><span class="lang-en" style="display:none;">Created solely by:</span></p>
+            <div class="impressum-name">
+                <div class="memory-container">
+                    Selina Brückner
+                    <div class="memory-popup">
+                        <img src="images/Selina_winkt.jpg" alt="Selina" />
+                    </div>
+                </div>
+            </div>
+            <p class="impressum-email">
+                <a href="mailto:s251133@th-ab.de" class="email-link">
+                    s251133@th-ab.de
+                </a>
+            </p>
+            <p class="impressum-id">
+                <span class="lang-de">Matrikelnummer:</span><span class="lang-en" style="display:none;">Student ID:</span> 2309020
+            </p>
+            <p class="impressum-note">
+                <span class="lang-de">ChatGPT wurde als Hilfsmittel genutzt.</span><span class="lang-en" style="display:none;">ChatGPT was used as a tool.</span>
+            </p>
+        </div>
     </section>
 
     <br><br><br>
