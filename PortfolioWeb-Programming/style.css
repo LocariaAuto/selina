@@ -1,631 +1,853 @@
-/* -------------------------
-   LIGHT MODE (default)
--------------------------- */
+/* Farben im Lightmode */
 :root {
-    --bg-color: rgb(210, 241, 241);
-    --section-bg: #c3e4e4;
-    --text-color: #074845;
-    --border-color: #0b484a;
-    --navbar-bg: rgb(32, 136, 144);
-    --navbar-border: #074748;
+    --bg-color: rgb(210, 241, 241); /* Hintergrundfarbe der Webseite im Light Mode / helle Pastellfarbe für Body-Hintergrund */
+    --section-bg: #c3e4e4; /* Hintergrundfarbe für Sektionen / Container wie #TitelundIntro */
+    --text-color: #074845; /* Standard-Textfarbe / dunkles Türkis für Lesbarkeit auf hellem Hintergrund */
+    --border-color: #0b484a; /* Rahmenfarbe / z.B. für Buttons, Boxen, Navbar-Ränder */
+    --navbar-bg: rgb(32, 136, 144); /* Hintergrundfarbe der Navigationsleiste im Light Mode */
+    --navbar-border: #074748; /* Rahmenfarbe der Navbar / untere Trennlinie */
 }
 
-/* -------------------------
-   DARK MODE
--------------------------- */
+/* Farben im Darkmode */
 :root.dark-mode {
-    --bg-color: #0b1c1c;
-    --section-bg: #112727;
-    --text-color: #d8f6f6;
-    --border-color: #558f8f;
-    --navbar-bg: #0e2f31;
-    --navbar-border: #0c4f57;
+    --bg-color: #0b1c1c; /* Hintergrundfarbe der Webseite im Dark Mode / sehr dunkles Grün-Blau */
+    --section-bg: #112727; /* Hintergrundfarbe für Sektionen im Dark Mode / dunkle Containerfarbe */
+    --text-color: #d8f6f6; /* Textfarbe im Dark Mode / helles Türkis für Lesbarkeit auf dunklem Hintergrund */
+    --border-color: #558f8f; /* Rahmenfarbe im Dark Mode / für Buttons, Boxen, Linien */
+    --navbar-bg: #0e2f31; /* Hintergrundfarbe der Navigationsleiste im Dark Mode */
+    --navbar-border: #0c4f57; /* Rahmenfarbe der Navbar im Dark Mode / untere Trennlinie */
 }
 
-.MachMichTuerkis {
-color:rgb(9, 104, 107)
-}
-
-/* Navbar fixed and transparent */
+/*Style des Containers der NavBar*/
 .NavBar {
-  position: relative; /* Positioning context for absolutely positioned buttons */
-  width: 100%;
-  overflow: visible; /* Ensure buttons aren't cut off */
+  position: relative; /* Die Navbar wird relativ zu ihrer normalen Position im Dokumentfluss positioniert */
+  width: 100%; /*Die Navbar nimmt den vollen Platz in ihrem Block ein*/
+  overflow: visible;/* Die NavBar würde beim Heraustreten aus der Box nicht abeschnitten */
 }
 
-.NavBar ul {
+/* Hamburger menu button - hidden on desktop */
+.hamburger {
+  display: none; /* Hidden by default (desktop) */
   position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 10001; /* Higher than navbar to ensure it's clickable */
   background: var(--navbar-bg);
-  background-color: var(--navbar-bg);
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 100vw; /* Prevent exceeding viewport width */
-  border-bottom: 5px solid var(--navbar-border);
-  display: flex;
-  align-items: center; /* Vertically center all items */
-  justify-content: center;
-  gap: 60px;
-  padding: 20px 20px; /* 20px padding on left and right for button spacing */
-  margin-top: 0px;
-  list-style: none;
-  z-index: 9999; /* make sure navbar is on top */
-  overflow: visible; /* Ensure buttons aren't cut off */
-  box-sizing: border-box; /* Include padding in width calculation */
-  transition: background 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
-}
-
-.NavBar ul li {
-  display: flex;
-  align-items: center; /* Vertically center content within each list item */
-}
-
-.NavBar ul li a {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  display: flex;
-  align-items: center; /* Vertically center link text */
-}
-
-body {
-  padding: 20px;
-  font-size: 20px;
-  color: var(--text-color);
-  margin-top: 80px;
-  margin-left: 200px;
-  margin-right: 200px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.theme-toggle {
-  position: absolute;
-  left: 20px; /* 20px from left edge */
-  top: 50%;
-  transform: translateY(-50%); /* Vertically center */
-}
-
-.language-toggle {
-  position: absolute;
-  right: 20px; /* 20px from right edge */
-  top: 50%;
-  transform: translateY(-50%); /* Vertically center */
-}
-
-.theme-toggle button,
-#langBtn {
-  background-color: var(--section-bg);
-  color: var(--text-color);
-  border-radius: 20px;
-  border: 2px solid var(--border-color);
-  padding: 10px 20px;
-  font-size: 16px;
+  border: 2px solid var(--navbar-border);
+  border-radius: 5px;
+  padding: 8px;
   cursor: pointer;
-  font-weight: bold;
-  white-space: nowrap; /* Prevent text wrapping */
-  max-width: calc(50vw - 40px); /* Prevent button from exceeding half viewport width */
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
-.theme-toggle button:hover,
-#langBtn:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.image {
-  position: relative; /* Establish stacking context */
-  z-index: 0; /* Keep dachshund images behind gallery images */
-}
-
-.image img {
-  position: relative;
-  z-index: 0; /* Keep dachshund images behind gallery images */
-  width: 200px;
-  height: auto;
-  transition: filter 0.5s ease; /* smooth transition */
-}
-
-/* When dark mode is active, invert the colors */
-.dark-mode .image img {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-.image-row {
-  position: relative; /* Establish stacking context */
-  z-index: 1; /* Ensure gallery container is above dachshund images */
-}
-
-.image-row img {
-  position: relative; /* Establish stacking context for z-index to work */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border-radius: 20px;
-  border: 2px solid var(--border-color);
+.hamburger span {
   width: 100%;
-  z-index: 1; /* Base z-index for gallery images */
-}
-
-.image-row img:hover {
-  transform: scale(2);
-  z-index: 100; /* Higher z-index on hover to appear above everything */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Style for links in content sections */
-#Intro a,
-#UeberMich a,
-#MeineBotschaft a,
-.impressum-content a {
-  color: var(--text-color);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border-color);
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
   transition: all 0.3s ease;
-}
-
-#Intro a:hover,
-#UeberMich a:hover,
-#MeineBotschaft a:hover,
-.impressum-content a:hover {
-  border-bottom: 2px solid var(--border-color);
-  opacity: 0.8;
-}
-
-#Intro a:visited,
-#UeberMich a:visited,
-#MeineBotschaft a:visited,
-.impressum-content a:visited {
-  color: var(--text-color);
-}
-
-#Intro {
-  border-radius: 20px; 
-  background-color: var(--section-bg);
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box; /* Prevent overflow */
-}
-
-#UeberMich {
-  border-radius: 20px; 
-  background-color: var(--section-bg);
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box; /* Prevent overflow */
-}
-
-#MeineBotschaft {
-  border-radius: 20px; 
-  background-color: var(--section-bg);
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box; /* Prevent overflow */
-}
-
-.sectioncontent {
-  padding: 40px;
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-#Galerie img {
-  border-radius: 20px;
-  border: 2px solid var(--border-color);
-  width: 20%;
-  height: auto;
-  margin: 10px;
-  display: inline-block;
-}
-
-#Kontakt {
-  padding: 20px;
-  width: 100%;
-  margin: 0;
-}
-
-.fade-in {
-  opacity: 0;
-  animation: fadeInAnimation 2s forwards;
-}
-
-@keyframes fadeInAnimation {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.tooltip {
-  position: relative;
-  cursor: pointer;
-  border-bottom: 1px dotted var(--border-color); /* subtle indicator */
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: var(--border-color);
-  color: #fff;
-  text-align: center;
-  padding: 5px 10px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 10;
-  bottom: 125%; /* position above text */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-.memory-container {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-}
-
-.memory-popup {
-    position: absolute;
-    bottom: 120%; /* show above the text */
-    left: 50%;
-    transform: translateX(-50%) scale(0); /* start hidden and scaled down */
-    transform-origin: bottom center; /* zoom from bottom center */
-    z-index: 10000; /* High z-index to ensure it appears above other content */
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.5s ease;
-    opacity: 0; /* hidden initially */
-    visibility: hidden; /* completely hidden when not hovered */
-    pointer-events: none; /* prevent popup from interfering with hover */
-    white-space: nowrap; /* prevent wrapping */
-}
-
-/* Timeline popups show below the item */
-.timeline-popup {
-    bottom: auto; /* Override bottom positioning */
-    top: 100%; /* Position below the item */
-    margin-top: 10px; /* Add some spacing */
-    transform-origin: top center; /* zoom from top center */
-}
-
-.memory-popup img {
-    width: 200px; /* adjust size */
-    height: auto;
-    display: block;
-}
-
-.memory-container:hover .memory-popup {
-    transform: translateX(-50%) scale(1); /* scale up to full size */
-    opacity: 1; /* make visible */
-    visibility: visible; /* make it visible */
-}
-
-/* Timeline popup hover - ensure it scales from top center */
-.timeline-item.memory-container:hover .timeline-popup {
-    transform: translateX(-50%) scale(1); /* scale up to full size */
-    opacity: 1; /* make visible */
-    visibility: visible; /* make it visible */
-}
-
-.timeline {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 30px 0;
-  position: relative;
-  padding: 40px 10px 20px; /* top padding for dots */
-  flex-wrap: wrap; /* allow wrapping on small screens */
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 32px; /* line slightly below top */
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--border-color);
-  z-index: 1;
-  transition: background 0.5s ease;
-}
-
-.timeline-item {
-  position: relative;
-  text-align: center;
-  width: 22%; /* smaller width to fit 4 items + extra milestone */
-  min-width: 180px; /* prevents items from being too small on mobile */
-  padding-top: 30px; /* pushes text below the dot */
-  margin-bottom: 40px; /* spacing for wrapping */
-}
-
-/* Timeline items as memory containers */
-.timeline-item.memory-container {
-  cursor: pointer;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  top: 0; /* dot at the top of the item */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
-  background: var(--section-bg);
-  border: 2px solid var(--border-color);
-  border-radius: 50%;
-  z-index: 2;
-  transition: background 0.5s ease, border-color 0.5s ease;
-}
-
-.timeline-date {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.timeline-content {
-  background: var(--section-bg);
-  padding: 5px 10px;
-  border-radius: 6px;
-  margin-top: 10px;
-  font-size: 0.9rem;
-  transition: background 0.5s ease;
-  display: block !important; /* Ensure block display to prevent overlap */
-  width: 100%; /* Take full width of container */
-  box-sizing: border-box; /* Include padding in width */
-  word-wrap: break-word; /* Allow text to wrap properly */
-  overflow-wrap: break-word; /* Additional word wrapping support */
-}
-
-/* Ensure language versions don't overlap */
-.timeline-item .timeline-content.lang-de,
-.timeline-item .timeline-content.lang-en {
   display: block;
 }
 
+/* Hamburger animation when active */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+
+/*Style des gesamten Navigationsbereiches*/
+.NavBar ul {
+  position: fixed; /* Die Liste bleibt beim Scrollen immer oben am Bildschirm fixiert */
+  background: var(--navbar-bg); /* Setzt die Hintergrundfarbe über die CSS-Variable */
+  background-color: var(--navbar-bg); /* Fallback bzw. doppelte Absicherung für den Hintergrund */
+  top: 0; /* Fixiert die Oberkante der Liste an den oberen Rand des Bildschirms */
+  left: 0; /* Fixiert die Liste am linken Bildschirmrand */
+  width: 100%; /* Die Liste erstreckt sich über die gesamte Bildschirmbreite */
+  max-width: 100vw; /* Verhindert, dass die Liste breiter wird als der sichtbare Bereich */
+  border-bottom: 5px solid var(--navbar-border); /* Setzt eine untere Rahmenlinie als optische Trennung */
+  display: flex; /* Ordnet die Navigationselemente mit Flexbox an */
+  align-items: center; /* Zentriert die Elemente vertikal in der Leiste */
+  justify-content: center; /* Zentriert alle Navigationselemente horizontal */
+  gap: 60px; /* Setzt den Abstand zwischen den einzelnen Navigationselementen */
+  padding: 20px 20px; /* Fügt innen links und rechts jeweils 20px Abstand hinzu */
+  margin-top: 0px; /* Entfernt jeden möglichen oberen Außenabstand */
+  list-style: none; /* Entfernt die Standard-Aufzählungszeichen der Liste */
+  z-index: 9999; /* Stellt sicher, dass die Navbar über allen anderen Elementen liegt */
+  overflow: visible; /* Verhindert das Abschneiden von hervorstehenden Elementen */
+  box-sizing: border-box; /* Bezieht Padding und Border in die Breitenberechnung ein */
+  transition: background 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, transform 0.3s ease; /* Weiche Übergänge bei Theme-Änderungen */
+}
+
+/*Style der Einzelnen Buttons in der NavBar*/
+.NavBar ul li {
+  display: flex; /* Das Listenelement nutzt Flexbox für eine saubere horizontale Ausrichtung */
+  align-items: center; /* Zentriert den Inhalt jedes Listenelements vertikal */
+}
+
+/* Style des klickbaren Teils der Buttons mit Link*/
+.NavBar ul li a {
+  color: white; /* Setzt die Textfarbe des Links auf Weiß */
+  font-weight: bold; /* Macht den Linktext fett für bessere Sichtbarkeit */
+  text-decoration: none; /* Entfernt die Standard-Unterstreichung des Links */
+  display: flex; /* Ermöglicht eine flexible Ausrichtung des Linkinhalts */
+  align-items: center; /* Zentriert den Text (oder Icons) im Link vertikal */
+}
+
+/*Haupt-Element der Webseite, das alle sichtbaren Inhalte enthält*/
+body {
+    padding-top: 80px; /* creates space for fixed navbar / Platz oben für die fixierte Navigationsleiste */
+    margin-left: 200px; /* Abstand links vom Browserfenster / verhindert, dass Inhalt direkt am Rand klebt */
+    margin-right: 200px; /* Abstand rechts vom Browserfenster / verhindert, dass Inhalt direkt am Rand klebt */
+    font-size: 20px; /* Standard-Schriftgröße für den gesamten Body-Text */
+    color: var(--text-color); /* Textfarbe über CSS-Variable gesetzt */
+    text-align: center; /* Zentriert den Text horizontal im Body */
+    font-family: Arial, sans-serif; /* Schriftart für den gesamten Body-Text */
+    background-color: var(--bg-color); /* Hintergrundfarbe des Bodys über CSS-Variable */
+    overflow-y: scroll; /* Stellt sicher, dass immer eine vertikale Scrollbar angezeigt wird */
+    transition: background-color 0.5s ease, color 0.5s ease; /* Weiche Übergänge für Hintergrundfarbe und Textfarbe bei Theme-Wechseln */
+}
+
+/*Container für den Dark/Light-Mode-Button aus der NavBar*/
+.theme-toggle {
+  position: absolute; /* Position wird relativ zum nächsten positionierten Container gesetzt */
+  left: 20px; /* 20px Abstand von der linken Seite des Containers */
+  top: 50%; /* Vertikale Position bei 50% des Containers */
+  transform: translateY(-50%); /* Korrigiert die Position, sodass der Button genau vertikal zentriert ist */
+}
+
+/*Container für den Sprachwechsel-Button*/
+.language-toggle {
+  position: absolute; /* Position wird relativ zum nächsten positionierten Container gesetzt */
+  right: 20px; /* 20px Abstand von der rechten Seite des Containers */
+  top: 50%; /* Vertikale Position bei 50% des Containers */
+  transform: translateY(-50%); /* Korrigiert die Position, sodass der Button genau vertikal zentriert ist */
+}
+
+/* Styling des Buttons innerhalb des Containers .theme-toggle */
+.theme-toggle button,
+/*klickbarer Sprachwechsel-Button in der Navbar*/
+#langBtn {
+  background-color: var(--section-bg); /* Hintergrundfarbe des Buttons über CSS-Variable gesetzt */
+  color: var(--text-color); /* Textfarbe des Buttons über CSS-Variable gesetzt */
+  border-radius: 20px; /* Runde Ecken für einen weicheren Button-Look */
+  border: 2px solid var(--border-color); /* Rahmenfarbe und -stärke des Buttons */
+  padding: 10px 20px; /* Innenabstand: 10px oben/unten, 20px links/rechts */
+  font-size: 16px; /* Schriftgröße des Button-Textes */
+  cursor: pointer; /* Mauszeiger wird zur Hand, wenn über den Button gefahren wird */
+  font-weight: bold; /* Text im Button fett dargestellt */
+  white-space: nowrap; /* Verhindert, dass der Text im Button umbrechen kann */
+  max-width: calc(50vw - 40px); /* Maximale Breite: die Hälfte des Viewports minus 40px */
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease; /* Weiche Übergänge bei Farb- und Rahmenänderungen */
+}
+
+/*Hover-Effekte für den Dark/Light-Mode-Button*/
+.theme-toggle button:hover,
+#langBtn:hover {
+  opacity: 0.9; /* Macht den Button leicht transparenter, wenn die Maus darüber schwebt */
+  transform: scale(1.05); /* Vergrößert den Button minimal, um einen „Hover-Effekt“ zu erzeugen */
+  transition: opacity 0.2s ease, transform 0.2s ease; /* Weiche Übergänge für Transparenz und Größe beim Hovern */
+}
+
+/*Bildcontainer selbst*/
+.image {
+  position: relative; /* Das Element wird relativ zu seiner normalen Position im Dokumentfluss positioniert und kann als Bezugspunkt für absolute Kinder dienen */
+  z-index: 0; /* Legt die Stapelreihenfolge fest, damit dieses Element hinter anderen Elementen mit höherem z-index liegt */
+}
+
+/*eigentliches Dackel-Bild im Container*/
+.image img {
+  position: relative; /* Das Bild wird relativ zu seiner normalen Position positioniert, um ggf. Effekte oder Überlagerungen zu ermöglichen */
+  z-index: 0; /* Legt die Stapelreihenfolge des Bildes fest, damit es hinter anderen Elementen mit höherem z-index bleibt */
+  width: 200px; /* Setzt die Breite des Bildes auf 200 Pixel */
+  height: auto; /* Passt die Höhe automatisch an, um das Seitenverhältnis beizubehalten */
+  transition: filter 0.5s ease; /* Erzeugt einen weichen Übergang, wenn sich Filtereffekte (z.B. Helligkeit, Kontrast) ändern */
+}
+
+/* CSS-Selektor der Farben invertiert wenn Darkmode aktiviert wird */
+.dark-mode .image img {
+    filter: invert(1) hue-rotate(180deg); /* Farben des Bildes invertieren und Farbton um 180° drehen */
+}
+
+/* Container für die Galerie-Bilderreihe */
+.image-row {
+  position: relative; /* Position relativ zur normalen Stelle, um Stapelreihenfolge zu ermöglichen */
+  z-index: 1; /* Galerie-Container liegt über den Dackel-Bildern */
+}
+
+/* Galerie-Bilder innerhalb der Reihe */
+.image-row img {
+  position: relative; /* Position relativ, damit z-index korrekt funktioniert */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Sanfte Übergänge bei Vergrößerung und Schatten */
+  cursor: pointer; /* Maus zeigt Hand beim Überfahren */
+  border-radius: 20px; /* Abgerundete Ecken */
+  border: 2px solid var(--border-color); /* Rahmenfarbe und -stärke */
+  width: 100%; /* Bild füllt die gesamte Breite des Containers */
+  z-index: 1; /* Grundlegende Stapelreihenfolge der Galerie-Bilder */
+}
+
+/* Hover-Effekt für Galerie-Bilder */
+.image-row img:hover {
+  transform: scale(2); /* Bild wird beim Hovern vergrößert */
+  z-index: 100; /* Bild erscheint über allen anderen Elementen */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Schatten für plastischen Effekt */
+}
+
+/* Links in Inhaltsbereichen */
+#TitelundIntro a,
+#UeberMich a,
+#MeineBotschaft a,
+.impressum-content a {
+  color: var(--text-color); /* Textfarbe der Links */
+  text-decoration: none; /* Keine Unterstreichung */
+  border-bottom: 1px solid var(--border-color); /* Dünne Linie unter dem Link */
+  transition: all 0.3s ease; /* Weiche Übergänge bei Hover */
+}
+
+/* Hover-Effekt für die Links */
+#TitelundIntro a:hover,
+#UeberMich a:hover,
+#MeineBotschaft a:hover,
+.impressum-content a:hover {
+  border-bottom: 2px solid var(--border-color); /* Linie unter Link wird dicker */
+  opacity: 0.8; /* Link wird leicht transparent */
+}
+
+/* Besuchte Links */
+#TitelundIntro a:visited,
+#UeberMich a:visited,
+#MeineBotschaft a:visited,
+.impressum-content a:visited {
+  color: var(--text-color); /* Besuchte Links behalten gleiche Farbe */
+}
+
+/* Intro-Sektion */
+#TitelundIntro {
+  border-radius: 20px; /* Abgerundete Ecken */
+  background-color: var(--section-bg); /* Hintergrundfarbe über Variable */
+  width: 100%; /* Breite 100% */
+  margin: 0; /* Kein Außenabstand */
+  box-sizing: border-box; /* Padding und Border werden in Breite einbezogen */
+  padding: 40px;
+}
+
+/* ÜberMich-Sektion */
+#UeberMich {
+  border-radius: 20px; /* Abgerundete Ecken */
+  background-color: var(--section-bg); /* Hintergrundfarbe über Variable */
+  width: 100%; /* Breite 100% */
+  margin: 0; /* Kein Außenabstand */
+  box-sizing: border-box; /* Padding und Border werden in Breite einbezogen */
+}
+
+/* MeineBotschaft-Sektion */
+#MeineBotschaft {
+  padding: 44px; /* repariert das verschobene Padding im Vergleich zu den anderen Containern*/
+  border-radius: 20px; /* Abgerundete Ecken */
+  background-color: var(--section-bg); /* Hintergrundfarbe über Variable */
+  width: 100%; /* Volle Breite */
+  margin: 0; /* Kein Außenabstand */
+  box-sizing: border-box; /* Padding und Border werden in Breite eingerechnet */
+}
+
+/* Inhalt innerhalb der Sektionen */
+.sectioncontent {
+  padding: 40px; /* Innenabstand rundum */
+  width: 100%; /* Volle Breite */
+  margin: 0; /* Kein Außenabstand */
+  box-sizing: border-box; /* Padding und Border werden in Breite eingerechnet */
+}
+
+/* Galerie-Bilder */
+#Galerie img {
+  border-radius: 20px; /* Abgerundete Ecken */
+  border: 2px solid var(--border-color); /* Rahmenfarbe und -stärke */
+  width: 20%; /* Breite 20% des Containers */
+  height: auto; /* Höhe automatisch, Seitenverhältnis bleibt erhalten */
+  margin: 10px; /* Abstand zwischen den Bildern */
+  display: inline-block; /* Bilder nebeneinander anzeigen */
+}
+
+/* Kontakt-Sektion */
+#Kontakt {
+  padding: 20px; /* Innenabstand rundum */
+  width: 100%; /* Volle Breite */
+  margin: 0; /* Kein Außenabstand */
+}
+
+/* Fade-In Effekt */
+.fade-in {
+  opacity: 0; /* Anfangs unsichtbar */
+  animation: fadeInAnimation 2s forwards; /* Animation, die das Element einblendet */
+}
+
+/* Keyframes für Fade-In Animation */
+@keyframes fadeInAnimation {
+  from { opacity: 0; transform: translateY(-20px); } /* Start: leicht nach oben verschoben und unsichtbar */
+  to { opacity: 1; transform: translateY(0); } /* Ende: normal sichtbar und Position zurück */
+}
+
+/* Tooltip-Element */
+.tooltip {
+  position: relative; /* Bezugspunkt für Tooltip-Text */
+  cursor: pointer; /* Maus zeigt Hand */
+  border-bottom: 1px dotted var(--border-color); /* kleine Linie als Hinweis auf Tooltip */
+}
+
+/* Tooltip-Text, der beim Hovern erscheint */
+.tooltip .tooltiptext {
+  visibility: hidden; /* Anfangs unsichtbar */
+  width: 200px; /* Breite des Tooltip-Textes */
+  background-color: var(--border-color); /* Hintergrundfarbe */
+  color: #fff; /* Textfarbe */
+  text-align: center; /* Zentrierter Text */
+  padding: 5px 10px; /* Innenabstand */
+  border-radius: 6px; /* Abgerundete Ecken */
+  position: absolute; /* Absolut positioniert relativ zum Tooltip-Container */
+  z-index: 10; /* Liegt über anderen Elementen */
+  bottom: 125%; /* Position oberhalb des Textes */
+  left: 50%; /* Horizontal zentriert */
+  transform: translateX(-50%); /* Korrektur für exakte Zentrierung */
+  opacity: 0; /* Unsichtbar */
+  transition: opacity 0.3s; /* Weiche Einblendung */
+}
+
+/* Tooltip erscheint beim Hovern */
+.tooltip:hover .tooltiptext {
+  visibility: visible; /* Text sichtbar */
+  opacity: 1; /* Volle Deckkraft */
+}
+
+/* Container für Memory-Elemente */
+.memory-container {
+  display: inline-block; /* Elemente nebeneinander anzeigen */
+  position: relative; /* Bezugspunkt für ggf. absolute Kinder */
+  cursor: pointer; /* Maus zeigt Hand */
+}
+
+/* Popup für Memory-Elemente */
+.memory-popup {
+    position: absolute; /* Absolut positioniert relativ zum Container */
+    bottom: 120%; /* Popup wird über dem Text angezeigt */
+    left: 50%; /* Horizontal zentriert */
+    transform: translateX(-50%) scale(0); /* Start: ausgeblendet und verkleinert */
+    transform-origin: bottom center; /* Skalierung beginnt vom unteren Mittelpunkt */
+    z-index: 10000; /* Sehr hoher Stapelindex, damit Popup über allem liegt */
+    border: 2px solid var(--border-color); /* Rahmenfarbe und -stärke */
+    border-radius: 10px; /* Abgerundete Ecken */
+    overflow: hidden; /* Inhalt, der überläuft, wird abgeschnitten */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Schatten für 3D-Effekt */
+    transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.5s ease; /* Weiche Übergänge */
+    opacity: 0; /* Anfangs unsichtbar */
+    visibility: hidden; /* Komplett verborgen, wenn nicht gehovt */
+    pointer-events: none; /* Verhindert Interferenz beim Hover */
+    white-space: nowrap; /* Zeilenumbruch verhindern */
+}
+
+/* Timeline-Popups erscheinen unterhalb des Elements */
+.timeline-popup {
+    bottom: auto; /* Überschreibt Bottom-Positionierung */
+    top: 100%; /* Position unterhalb des Items */
+    margin-top: 10px; /* Abstand nach oben */
+    transform-origin: top center; /* Skalierung beginnt vom oberen Mittelpunkt */
+}
+
+/* Bilder in Memory-Popups */
+.memory-popup img {
+    width: 200px; /* Bildgröße */
+    height: auto; /* Höhe proportional zur Breite */
+    display: block; /* Block-Element, damit Abstand korrekt ist */
+}
+
+/* Memory-Popup beim Hovern */
+.memory-container:hover .memory-popup {
+    transform: translateX(-50%) scale(1); /* Popup auf volle Größe skalieren */
+    opacity: 1; /* Sichtbar machen */
+    visibility: visible; /* Sichtbar machen */
+}
+
+/* Timeline-Popup beim Hovern */
+.timeline-item.memory-container:hover .timeline-popup {
+    transform: translateX(-50%) scale(1); /* Popup auf volle Größe skalieren */
+    opacity: 1; /* Sichtbar machen */
+    visibility: visible; /* Sichtbar machen */
+}
+
+/* Timeline-Container */
+.timeline {
+  display: flex; /* Flexbox für horizontale Anordnung */
+  justify-content: space-between; /* Gleichmäßiger Abstand zwischen Items */
+  align-items: flex-start; /* Items oben ausrichten */
+  margin: 30px 0; /* Abstand oben und unten */
+  position: relative; /* Bezugspunkt für Pseudoelemente */
+  padding: 40px 10px 20px; /* Innenabstand, Platz für Punkte */
+  flex-wrap: wrap; /* Zeilenumbruch bei kleinen Bildschirmen erlauben */
+}
+
+/* Horizontale Linie der Timeline */
+.timeline::before {
+  content: ''; /* Pseudoelement für Linie */
+  position: absolute; /* Absolut positioniert relativ zum Timeline-Container */
+  top: 32px; /* Linie leicht unterhalb des oberen Randes */
+  left: 0;
+  width: 100%; /* Volle Breite */
+  height: 4px; /* Höhe der Linie */
+  background: var(--border-color); /* Linienfarbe */
+  z-index: 1; /* Linie liegt hinter Items */
+  transition: background 0.5s ease; /* Weiche Übergänge bei Farbänderung */
+}
+
+/* Timeline-Item */
+.timeline-item {
+  position: relative; /* Bezugspunkt für Punkt und Popup */
+  text-align: center; /* Text zentrieren */
+  width: 22%; /* Breite für 4 Items plus extra */
+  min-width: 180px; /* Verhindert zu kleine Items auf Mobilgeräten */
+  padding-top: 30px; /* Text unterhalb des Punktes positionieren */
+  margin-bottom: 40px; /* Abstand nach unten bei Zeilenumbruch */
+}
+
+/* Timeline-Item als Memory-Container */
+.timeline-item.memory-container {
+  cursor: pointer; /* Maus zeigt Hand */
+}
+
+/* Punkt am oberen Rand des Timeline-Items */
+.timeline-item::before {
+  content: ''; /* Pseudoelement für Punkt */
+  position: absolute;
+  top: 0; /* Oben im Item */
+  left: 50%; /* Horizontal zentriert */
+  transform: translateX(-50%); /* Korrektur für exakte Zentrierung */
+  width: 16px; /* Durchmesser des Punktes */
+  height: 16px;
+  background: var(--section-bg); /* Punktfarbe */
+  border: 2px solid var(--border-color); /* Rahmen des Punktes */
+  border-radius: 50%; /* Runde Form */
+  z-index: 2; /* Punkt liegt über Linie, aber unter Popup */
+  transition: background 0.5s ease, border-color 0.5s ease; /* Weiche Übergänge bei Farbänderung */
+}
+
+/* Datum im Timeline-Item */
+.timeline-date {
+  font-weight: bold; /* Fett dargestellt */
+  margin-bottom: 5px; /* Abstand nach unten */
+}
+
+/* Inhalt im Timeline-Item */
+.timeline-content {
+  background: var(--section-bg); /* Hintergrundfarbe */
+  padding: 5px 10px; /* Innenabstand */
+  border-radius: 6px; /* Abgerundete Ecken */
+  margin-top: 10px; /* Abstand zum Punkt */
+  font-size: 0.9rem; /* Schriftgröße */
+  transition: background 0.5s ease; /* Weiche Übergänge bei Farbwechsel */
+  display: block !important; /* Blockanzeige, verhindert Überlappung */
+  width: 100%; /* Volle Breite des Containers */
+  box-sizing: border-box; /* Padding wird in Breite einbezogen */
+  word-wrap: break-word; /* Zeilenumbruch bei langen Wörtern */
+  overflow-wrap: break-word; /* zusätzliche Unterstützung für Zeilenumbruch */
+}
+
+/* Sicherstellen, dass Sprachversionen in der Timeline sich nicht überlappen */
+.timeline-item .timeline-content.lang-de,
+.timeline-item .timeline-content.lang-en {
+  display: block; /* Beide Sprachversionen standardmäßig block anzeigen */
+}
+
 .timeline-item .timeline-content[style*="display: none"] {
-  display: none !important;
+  display: none !important; /* Elemente, die ausgeblendet sein sollen, bleiben unsichtbar */
 }
 
 .timeline-item .timeline-content[style*="display: inline"] {
-  display: block !important; /* Override inline to prevent overlap */
+  display: block !important; /* Inline-Darstellung überschreiben, um Überlappung zu verhindern */
 }
 
+/* Benutzerdefinierte Fehlermeldung */
 .custom-error {
-    position: absolute;
-    left:0;
-    background: #cce9ff;
-    color: #003b73;
-    border: 2px solid #0077cc;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    margin-top: 5px;
-    display: none;
-    z-index: 999;
+    position: absolute; /* Absolut positioniert innerhalb des Formulars */
+    left: 0; /* Am linken Rand des Containers */
+    background: #cce9ff; /* Hellblauer Hintergrund */
+    color: #003b73; /* Dunkelblaue Schriftfarbe */
+    border: 2px solid #0077cc; /* Rahmenfarbe */
+    padding: 8px 12px; /* Innenabstand */
+    border-radius: 6px; /* Abgerundete Ecken */
+    font-size: 14px; /* Schriftgröße */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Schatten für 3D-Effekt */
+    margin-top: 5px; /* Abstand nach oben */
+    display: none; /* Standardmäßig unsichtbar */
+    z-index: 999; /* Liegt über Formularfeldern */
 }
 
+/* Symbol für Fehlermeldung */
 .custom-error::before {
-    content: "!";
-    font-weight: bold;
-    display: inline-block;
-    margin-right: 6px;
-    background: #0077cc;
-    color: white;
-    padding: 2px 7px;
-    border-radius: 4px;
+    content: "!"; /* Ausrufezeichen als Warnsymbol */
+    font-weight: bold; /* Fett */
+    display: inline-block; /* Inline-Block für Abstand */
+    margin-right: 6px; /* Abstand zum Text */
+    background: #0077cc; /* Hintergrundfarbe */
+    color: white; /* Schriftfarbe weiß */
+    padding: 2px 7px; /* Innenabstand */
+    border-radius: 4px; /* Runde Ecken */
 }
 
+/* Container für Formular */
 .form-container {
-    max-width: 400px;
-    margin: 0 auto;
-    position: relative;
+    max-width: 400px; /* Maximale Breite */
+    margin: 0 auto; /* Zentriert horizontal */
+    position: relative; /* Bezugspunkt für Fehlermeldungen */
 }
 
+/* Gruppe von Formularfeldern */
 .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-  position: relative;
+  display: flex; /* Flexbox für vertikale Anordnung */
+  flex-direction: column; /* Elemente untereinander */
+  margin-bottom: 15px; /* Abstand nach unten */
+  position: relative; /* Bezugspunkt für Fehlerhinweise */
 }
 
+/* Beschriftung der Eingabefelder */
 .form-group label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: var(--text-color);
-  transition: color 0.5s ease;
+  font-weight: bold; /* Fett */
+  margin-bottom: 5px; /* Abstand nach unten */
+  color: var(--text-color); /* Textfarbe */
+  transition: color 0.5s ease; /* Weiche Übergänge bei Farbänderung */
 }
 
+/* Eingabefelder und Textareas */
 .form-group input,
 .form-group textarea {
-  background-color: var(--section-bg);
-  color: var(--text-color);
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid var(--border-color);
-  border-radius: 20px;
-  box-sizing: border-box;
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  background-color: var(--section-bg); /* Hintergrundfarbe */
+  color: var(--text-color); /* Textfarbe */
+  padding: 10px; /* Innenabstand */
+  font-size: 16px; /* Schriftgröße */
+  border: 2px solid var(--border-color); /* Rahmenfarbe und -stärke */
+  border-radius: 20px; /* Abgerundete Ecken */
+  box-sizing: border-box; /* Padding in Breite einbeziehen */
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease; /* Weiche Übergänge */
 }
 
+/* Absende-Button */
 .submit-button {
-  background-color: var(--section-bg);
-  color: var(--text-color);
-  border-radius: 20px;
-  border: 2px solid var(--border-color);
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  background-color: var(--section-bg); /* Hintergrundfarbe */
+  color: var(--text-color); /* Textfarbe */
+  border-radius: 20px; /* Abgerundete Ecken */
+  border: 2px solid var(--border-color); /* Rahmenfarbe */
+  padding: 10px 20px; /* Innenabstand */
+  font-size: 16px; /* Schriftgröße */
+  cursor: pointer; /* Maus zeigt Hand */
+  font-weight: bold; /* Fett */
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease; /* Weiche Übergänge */
 }
 
+/* Hover-Effekt für Absende-Button */
 .submit-button:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 0.9; /* Leicht transparent */
+  transform: scale(1.05); /* Vergrößerung */
+  transition: opacity 0.2s ease, transform 0.2s ease; /* Schnelle Übergänge */
 }
 
+/* Impressum-Sektion */
 #Impressum {
-  color: var(--text-color);
-  border-radius: 20px; 
-  background-color: var(--section-bg);
-  padding: 25px;
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box; /* Include padding in width calculation to prevent overflow */
-  overflow-wrap: break-word; /* Allow long words to break if needed */
-  word-wrap: break-word; /* Fallback for older browsers */
+  color: var(--text-color); /* Textfarbe */
+  border-radius: 20px; /* Abgerundete Ecken */
+  background-color: var(--section-bg); /* Hintergrundfarbe */
+  padding: 25px; /* Innenabstand */
+  width: 100%; /* Volle Breite */
+  margin: 0; /* Kein Außenabstand */
+  box-sizing: border-box; /* Padding in Breite einbeziehen */
+  overflow-wrap: break-word; /* Lange Wörter umbrechen */
+  word-wrap: break-word; /* Fallback für ältere Browser */
 }
 
+/* Überschrift im Impressum */
 #Impressum h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 1.4rem;
-  text-align: center;
-  color: var(--text-color);
+  margin-top: 0; /* Kein Abstand oben / bündig mit Container */
+  margin-bottom: 15px; /* Abstand nach unten zum folgenden Inhalt */
+  font-size: 1.4rem; /* Schriftgröße der Überschrift */
+  text-align: center; /* Zentriert die Überschrift horizontal im Container */
+  color: var(--text-color); /* Textfarbe über CSS-Variable gesetzt */
 }
 
+/* Inhalt innerhalb des Impressum */
 .impressum-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
-  text-align: center;
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Vertikal */
+  gap: 8px; /* Abstand zwischen Elementen */
+  align-items: center; /* Zentriert horizontal */
+  text-align: center; /* Text zentriert */
 }
 
+/* Labels im Impressum */
 .impressum-label {
-  font-size: 0.9rem;
-  margin: 0;
-  opacity: 0.8;
+  font-size: 0.9rem; /* Schriftgröße der Labels im Impressum */
+  margin: 0; /* Kein äußerer Abstand / bündig im Container */
+  opacity: 0.8; /* Leicht transparent, weniger dominant als Name oder E-Mail */
 }
 
+/* Namen im Impressum */
 .impressum-name {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 0;
-  color: var(--text-color);
+  font-size: 1.1rem; /* Schriftgröße für die Namen */
+  font-weight: bold; /* Fettgedruckt, um Namen hervorzuheben */
+  margin: 0; /* Kein äußerer Abstand */
+  color: var(--text-color); /* Textfarbe über CSS-Variable gesetzt */
 }
 
+/* E-Mail im Impressum */
 .impressum-email {
-  margin: 0;
-  margin-top: 0;
-  font-size: 1rem;
+  margin: 0; /* Kein äußerer Abstand */
+  font-size: 1rem; /* Schriftgröße der E-Mail-Adresse */
 }
 
+/* Link für E-Mail */
 .email-link {
-  color: var(--text-color);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 2px solid var(--border-color);
-  transition: all 0.3s ease;
+  color: var(--text-color); /* Textfarbe über CSS-Variable gesetzt */
+  text-decoration: none; /* Keine Unterstreichung */
+  display: inline-flex; /* Flexbox für Icon + Text nebeneinander */
+  align-items: center; /* Vertikal zentriert */
+  gap: 6px; /* Abstand zwischen Icon und Text */
+  padding: 6px 12px; /* Innenabstand oben/unten 6px, links/rechts 12px */
+  border-radius: 8px; /* Abgerundete Ecken */
+  border: 2px solid var(--border-color); /* Rahmenfarbe und -stärke */
+  transition: all 0.3s ease; /* Weiche Übergänge bei Farb- und Größenänderungen */
 }
 
+/* Hover-Effekt für den E-Mail-Link */
 .email-link:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
+  opacity: 0.8; /* leicht transparent beim Hovern */
+  transform: scale(1.05); /* leicht vergrößert beim Hovern */
 }
 
+/* Icon im E-Mail-Link */
 .email-icon {
-  font-size: 1rem;
+  font-size: 1rem; /* Größe des Icons innerhalb des Links */
 }
 
+/* ID im Impressum */
 .impressum-id {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.9;
+  margin: 0; /* Kein äußerer Abstand */
+  font-size: 0.9rem; /* Schriftgröße für ID */
+  opacity: 0.9; /* Leicht transparent */
 }
 
+/* Hinweistext im Impressum */
 .impressum-note {
-  margin: 10px 0 0 0;
-  font-size: 0.85rem;
-  font-style: italic;
-  opacity: 0.7;
+  margin: 10px 0 0 0; /* Abstand oben 10px, rest 0 */
+  font-size: 0.85rem; /* Schriftgröße für Hinweistext */
+  font-style: italic; /* Kursiv dargestellt */
+  opacity: 0.7; /* Leicht transparent */
 }
 
+/* Scroll-Margin für alle Haupt-Sektionen */
 #Home,
 #UeberMich,
 #MeineBotschaft,
 #Galerie,
 #Kontakt,
 #Impressum {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 80px; /* Platz für fixierte Navbar beim Scrollen */
 }
 
+/* Benachrichtigungs-Toast */
 .notification-toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--border-color);
-  color: white;
-  padding: 16px 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  display: none;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
-  max-width: 300px;
-  font-weight: bold;
+  position: fixed; /* Fixiert am Bildschirm, bleibt beim Scrollen sichtbar */
+  bottom: 20px; /* Abstand vom unteren Rand */
+  right: 20px; /* Abstand vom rechten Rand */
+  background-color: var(--border-color); /* Hintergrundfarbe über Variable */
+  color: white; /* Textfarbe */
+  padding: 16px 24px; /* Innenabstand: 16px oben/unten, 24px links/rechts */
+  border-radius: 8px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Schatten für 3D-Effekt */
+  z-index: 1000; /* Liegt über anderen Elementen */
+  display: none; /* Standardmäßig unsichtbar */
+  opacity: 0; /* Anfangs unsichtbar */
+  transform: translateY(20px); /* leicht nach unten verschoben */
+  transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease; /* Weiche Übergänge für Ein-/Ausblenden und Farbwechsel */
+  max-width: 300px; /* Maximale Breite */
+  font-weight: bold; /* Fettgedruckter Text */
 }
 
+/* Anzeige des Toasts */
 .notification-toast.show {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  animation: attentionPulse 2s ease-in-out;
+  display: block; /* Sichtbar machen */
+  opacity: 1; /* Volle Deckkraft */
+  transform: translateY(0); /* Position zurück auf Normalhöhe */
+  animation: attentionPulse 2s ease-in-out; /* Pulsierende Animation */
 }
 
+/* Keyframes für pulsierenden Toast */
 @keyframes attentionPulse {
   0% {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(0) scale(1); /* Ausgangsposition und normale Größe */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Leichter Schatten */
   }
   25% {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px) scale(1.05); /* leicht nach oben verschoben und vergrößert */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* stärkerer Schatten */
   }
   50% {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(0) scale(1); /* zurück zur Ausgangsposition */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Schatten wieder leicht */
   }
   75% {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px) scale(1.02); /* leichte Aufwärtsbewegung und minimale Vergrößerung */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); /* mittlerer Schatten */
   }
   100% {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(0) scale(1); /* wieder Ausgangsposition */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Schatten zurück auf Ausgangswert */
   }
 }
 
+/* Erfolgreicher Toast */
 .notification-toast.success {
-  background-color: rgb(52, 156, 164); /* Lighter teal that fits the design */
-  color: white;
+  background-color: rgb(52, 156, 164); /* Helleres Türkis für erfolgreichen Toast */
+  color: white; /* Textfarbe weiß */
 }
 
-/* Dark mode success toast */
+/* Dark-Mode Erfolgstoast */
 :root.dark-mode .notification-toast.success {
-  background-color: #1a4a4f; /* Lighter teal for dark mode */
+  background-color: #1a4a4f; /* Angepasste Türkisfarbe im Dark Mode */
 }
 
+/* Fehler-Toast */
 .notification-toast.error {
-  background-color: #8b2e2e; /* Darker red that fits better with the color scheme */
-  color: white;
+  background-color: #8b2e2e; /* Dunkelrot für Fehlermeldungen */
+  color: white; /* Textfarbe weiß */
+}
+
+/* MOBILE RESPONSIVE STYLES */
+@media screen and (max-width: 768px) {
+  /* Show hamburger button on mobile */
+  .hamburger {
+    display: flex !important;
+  }
+
+  /* Adjust body margins for mobile */
+  body {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Mobile navbar - show minimal bar, hide menu content by default */
+  .NavBar ul {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    padding: 0 !important;
+    max-height: 60px !important; /* Show minimal bar for hamburger */
+    min-height: 60px !important;
+    overflow: hidden;
+    opacity: 1 !important; /* Keep bar visible */
+    visibility: visible !important;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    border-bottom: 5px solid var(--navbar-border) !important;
+    pointer-events: auto; /* Allow clicks on bar */
+    background: var(--navbar-bg);
+  }
+  
+  /* Hide menu items when menu is closed, but keep hamburger visible */
+  .NavBar ul:not(.mobile-menu-active) > li {
+    display: none !important;
+  }
+  
+  /* Ensure hamburger button is always visible and on top - vertically centered in navbar */
+  .hamburger {
+    position: fixed !important;
+    top: calc((60px - 40px) / 2) !important; /* Center 40px button in 60px navbar */
+    right: 20px !important;
+    z-index: 10001 !important;
+    display: flex !important;
+  }
+
+  /* Show menu when active */
+  .NavBar ul.mobile-menu-active {
+    max-height: calc(100vh - 20px) !important;
+    min-height: auto !important;
+    padding: 60px 0 20px 0 !important;
+    border-bottom: 5px solid var(--navbar-border) !important;
+    overflow-y: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important; /* Enable clicks when visible */
+  }
+  
+  /* Show menu items when menu is active */
+  .NavBar ul.mobile-menu-active > li {
+    display: flex !important;
+  }
+
+  /* Mobile menu items */
+  .NavBar ul li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .NavBar ul li:last-child {
+    border-bottom: none;
+  }
+
+  /* Theme and language toggles in mobile menu */
+  .NavBar ul li.theme-toggle,
+  .NavBar ul li.language-toggle {
+    position: static;
+    transform: none;
+    width: 100%;
+    justify-content: center;
+    margin: 5px 0;
+  }
+
+  .NavBar ul li.theme-toggle button,
+  .NavBar ul li.language-toggle button {
+    width: auto;
+    max-width: none;
+  }
+
+  /* Navigation links in mobile */
+  .NavBar ul li a {
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 18px;
+  }
+
+  /* Adjust navbar height for mobile - already handled by NavBar height */
+  body {
+    padding-top: 65px; /* Space for navbar bar + border */
+  }
+}
+
+/* Tablet and smaller desktop adjustments */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  body {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .NavBar ul {
+    gap: 30px;
+    padding: 15px 15px;
+  }
 }

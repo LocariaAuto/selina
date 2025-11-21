@@ -1,0 +1,119 @@
+<!--Beginn des html-->   
+<html>
+   
+    <!--Head-->   
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+
+    <!--Beginn des Body-->   
+    <body>
+
+        <!--Navigationsbar mit Verlinkung zu 5 Items + Language-Toggle-Button um zwischen Deutsch und Englisch umzuschalten-->
+        <nav class="NavBar">
+            <ul>
+                <li class="theme-toggle"><button id="theme-button">Dark Mode</button></li>
+                <li><a href="index.html#Home"><span class="lang-de">Home</span><span class="lang-en" style="display:none;">Home</span></a></li>
+                <li><a href="2-ueber-mich.html"><span class="lang-de">Über Mich</span><span class="lang-en" style="display:none;">About Me</span></a></li>
+                <li><a href="3-meine-botschaft.html"><span class="lang-de">Meine Botschaft</span><span class="lang-en" style="display:none;">My Message</span></a></li>
+                <li><a href="4-galerie.html"><span class="lang-de">Galerie</span><span class="lang-en" style="display:none;">Gallery</span></a></li>
+                <li><a href="5-kontakt.html"><span class="lang-de">Kontakt</span><span class="lang-en" style="display:none;">Contact</span></a></li>
+                <li><a href="6-impressum.html"><span class="lang-de">Impressum</span><span class="lang-en" style="display:none;">Legal Notice</span></a></li>
+                <li class="language-toggle"><button id="langBtn">EN</button></li>
+            </ul>
+        </nav>
+
+        <!--Dackelbild-->
+        <div class="image">
+            <img src="images/ImageForWP-Project.4.png" alt="Bild von Dackel">
+        </div>
+
+        <!--Absätze-->
+        
+                <!--Über mich (auf Englisch und Deutsch) - Mit 5 interaktiven Elementen (Memory-Pop-Up von Nellys Foto, sowie passenden Bildern zu den Steps in der Timeline)-->
+                <section id="UeberMich" class="section">
+                    <div class="sectioncontent">
+                        <br><br>
+                        <span class="lang-de">
+                            Mein Name ist Selina Brückner, ich bin 30 Jahre alt und lebe mit meinem Partner und unserem Kater in Leidersbach. Leider ist unsere Hundin Anfang November plötzlich verstorben, weshalb ich Sie in diese Seite miteinbinden möchte.
+                            <br><br>
+                            <div class="memory-container">
+                                In loving memory of Nelly <span class="heart">♥</span>
+                                    <div class="memory-popup">
+                                        <img src="images/Nelly9.jpg" alt="Nelly" />
+                                    </div>
+                    </div>
+                    <br><br>
+                    In den nächsten 7 Semestern an der TH Aschaffenburg und am Campus Miltenberg erhoffe ich mir, mein Wissensdrang für die Medienwelt und das Marketing zu stillen. 
+                    Ich wünsche mir nicht nur einen guten Abschluss, sondern auch starke Fachkompetenz für meinen späteren beruflichen Alltag. 
+                    Schließlich möchte ich für meine wachsende Familie sorgen können. 
+                    In den letzten acht Jahren habe ich mich beruflich im Gesundheitswesen aufgehalten, was angesichts der Belastung und des Schichtdienstes leider nicht für Jeden "gesund ist". 
+                    Deshalb hoffe ich im Digitalen Marketing und E-Commerce meine neue Passion zu finden!
+                </span>
+                <span class="lang-en" style="display:none;">
+                    My name is Selina Brückner, I am 30 years old and live with my partner and our cat in Leidersbach. Unfortunately, our dog passed away suddenly in early November, which is why I want to include her in this website.
+                    <br><br>
+                    <div class="memory-container">
+                        In loving memory of Nelly <span class="heart">♥</span>
+                            <div class="memory-popup">
+                                <img src="images/Nelly9.jpg" alt="Nelly" />
+                            </div>
+                    </div>
+                    <br><br>
+                    Over the next 7 semesters at TH Aschaffenburg and the Miltenberg campus, I hope to satisfy my curiosity for the media world and marketing. 
+                    I aim not only for a good degree but also strong expertise for my future professional life. 
+                    Ultimately, I want to provide for my growing family. 
+                    For the last eight years, I worked in healthcare, which, given the stress and shift work, is not healthy for everyone. 
+                    Therefore, I hope to find my new passion in Digital Marketing and E-Commerce!
+                </span>
+                <div class="timeline">
+                    <div class="timeline-item memory-container">
+                        <div class="timeline-date">2015-2023</div>
+                        <div class="timeline-content lang-de">Tätigkeit im Gesundheitswesen
+                        </div>
+                        <div class="timeline-content lang-en" style="display:none;">Career in healthcare</div>
+                        <div class="memory-popup timeline-popup">
+                            <img src="images/image1.jpg" alt="Selina sitzt in Rettungshubschrauber auf Studienreise" />
+                        </div>
+                    </div>
+                    <div class="timeline-item memory-container">
+                        <div class="timeline-date">2023-2024</div>
+                        <div class="timeline-content lang-de">Zwei Jahre Backpacking und Leben in Kanada</div>
+                        <div class="timeline-content lang-en" style="display:none;">Two years of backpacking and living in Canada</div>
+                        <div class="memory-popup timeline-popup">
+                            <img src="images/image2.jpg" alt="Selina mit großem Rucksack am Flughafen" />
+                        </div>
+                    </div>
+                    <div class="timeline-item memory-container">
+                        <div class="timeline-date">2025-2029</div>
+                        <div class="timeline-content lang-de">Studium Digitales Marketing & E-Commerce</div>
+                        <div class="timeline-content lang-en" style="display:none;">Studying Digital Marketing & E-Commerce</div>
+                        <div class="memory-popup timeline-popup">
+                            <img src="images/image3.jpeg" alt="Gruppenbild der ECOMs und MIMAs WS2025" />
+                        </div>
+                    </div>
+                    <div class="timeline-item memory-container">
+                        <div class="timeline-date">ab 2029</div>
+                        <div class="timeline-content lang-de">Berufliche Weiterentwicklung und Familie</div>
+                        <div class="timeline-content lang-en" style="display:none;">Professional growth & family life</div>
+                        <div class="memory-popup timeline-popup">
+                            <img src="images/image4.jpg" alt="Ultraschallbild unserer Tochter" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Dackelbild-->
+        <div class="image">
+            <img src="images/ImageForWP-Project.4.png" alt="Bild von Dackel">
+        </div>
+        
+        <script src="javascript.js" defer></script>
+
+    <!--Ende des Body-->
+    </body>
+
+<!--Ende des html-->
+</html>

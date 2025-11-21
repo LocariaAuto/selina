@@ -1,0 +1,74 @@
+<!--Beginn des html-->   
+<html>
+   
+    <!--Head-->   
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+
+    <!--Beginn des Body-->   
+    <body>
+
+        <!--Navigationsbar mit Verlinkung zu 5 Items + Language-Toggle-Button um zwischen Deutsch und Englisch umzuschalten-->
+        <nav class="NavBar">
+            <ul>
+                <li class="theme-toggle"><button id="theme-button">Dark Mode</button></li>
+                <li><a href="index.html#Home"><span class="lang-de">Home</span><span class="lang-en" style="display:none;">Home</span></a></li>
+                <li><a href="2-ueber-mich.html"><span class="lang-de">Über Mich</span><span class="lang-en" style="display:none;">About Me</span></a></li>
+                <li><a href="3-meine-botschaft.html"><span class="lang-de">Meine Botschaft</span><span class="lang-en" style="display:none;">My Message</span></a></li>
+                <li><a href="4-galerie.html"><span class="lang-de">Galerie</span><span class="lang-en" style="display:none;">Gallery</span></a></li>
+                <li><a href="5-kontakt.html"><span class="lang-de">Kontakt</span><span class="lang-en" style="display:none;">Contact</span></a></li>
+                <li><a href="6-impressum.html"><span class="lang-de">Impressum</span><span class="lang-en" style="display:none;">Legal Notice</span></a></li>
+                <li class="language-toggle"><button id="langBtn">EN</button></li>
+            </ul>
+        </nav>
+        
+        <!--Dackelbild-->
+        <div class="image">
+            <img src="images/ImageForWP-Project.4.png" alt="Bild von Dackel">
+        </div>
+
+        <!--Impressum (auf Englisch und Deutsch) mit Memory-Pop-Up-Bildern über meinem Namen und klickbarer Email-->
+        <section id="Impressum">
+            <h2><span class="lang-de">Impressum</span><span class="lang-en" style="display:none;">Legal Notice</span></h2>
+            <div class="impressum-content">
+                <p class="impressum-label"><span class="lang-de">Alleinig erstellt durch:</span><span class="lang-en" style="display:none;">Created solely by:</span></p>
+                <div class="impressum-name">
+                    <div class="memory-container">
+                        Selina Brückner
+                        <div class="memory-popup">
+                            <img src="images/Selina_winkt.jpg" alt="Selina winkt" />
+                        </div>
+                    </div>
+                </div>
+                <p class="impressum-email">
+                    <a href="mailto:s251133@th-ab.de" class="email-link">
+                        s251133@th-ab.de
+                    </a>
+                </p>
+                <p class="impressum-id">
+                    <span class="lang-de">Matrikelnummer:</span><span class="lang-en" style="display:none;">Student ID:</span> 2309020
+                </p>
+                <p class="impressum-note">
+                    <span class="lang-de">ChatGPT wurde als Hilfsmittel genutzt.</span><span class="lang-en" style="display:none;">ChatGPT was used as a tool.</span>
+                </p>
+            </div>
+        </section>
+
+        <!--Toast Notification - Bestätigung "Nachricht gesendet!" nach erfolgreichem Ausfüllen und Absenden im Kontakfeld-->
+        <div id="notificationToast" class="notification-toast">
+            <span id="toastMessage"></span>
+        </div>  
+
+        <!--Dackelbild-->
+        <div class="image">
+            <img src="images/ImageForWP-Project.4.png" alt="Bild von Dackel">
+        </div>
+        <script src="javascript.js" defer></script>
+
+    <!--Ende des Body-->
+    </body>
+
+<!--Ende des html-->
+</html>
