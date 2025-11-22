@@ -198,8 +198,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // TOAST-BENACHRICHTIGUNG
 function showToast(message, type) {
-    const toast = document.getElementById('notificationToast'); // Toast-Container
-    const messageSpan = document.getElementById('toastMessage'); // Text im Toast
+    let toast = document.getElementById('notificationToast'); // Toast-Container
+    let messageSpan = document.getElementById('toastMessage'); // Text im Toast
+
+    // Create toast elements if they don't exist
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'notificationToast';
+        toast.className = 'notification-toast';
+        document.body.appendChild(toast);
+    }
+
+    if (!messageSpan) {
+        messageSpan = document.createElement('span');
+        messageSpan.id = 'toastMessage';
+        toast.appendChild(messageSpan);
+    }
 
     messageSpan.innerText = message; // Nachricht einfügen
     toast.className = 'notification-toast show ' + type; // Klassen setzen
